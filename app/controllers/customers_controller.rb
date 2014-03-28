@@ -5,13 +5,7 @@ class CustomersController < ApplicationController
   def index
     redis_url = "tcp://localhost:6379/0"  #todo: update to env
     cia = CIA.new(redis_url)
-    customer_list = cia.list
-
-    customer_list.each do |customer|
-      puts "#{customer}"
-    end
-
-
+    @customer_list = cia.list
   end
 
   def create
@@ -35,12 +29,9 @@ class CustomersController < ApplicationController
   end
 
 
-  def update
+  def edit
 
   end
 
-  def show
-
-  end
 
 end
