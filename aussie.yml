@@ -1,0 +1,73 @@
+aussie:
+  abn: "63 148 893 967"
+  registered_name: The Aussie Phone Company Pty Ltd
+  trading_as: Aussie
+  url: http://michaelfebrianto.com/
+  apikey: 37E9B8A2826D4D948AC149972EA97675
+  contact:
+    phone: "1300 920 182"
+    fax: "1300 920 183"
+    email: support@aussiephonecompany.com.au
+  activedb:
+    database: CloudXchange
+    username: sa
+    password: 5hyl0ck
+  myaccount:
+    name: aussie
+    enabled: true
+    offline: false
+    billing_address_only: false
+    calls:
+      csv: false
+    contacts:
+      pc_sc_only: false
+    data_usage:
+      billing_period: internet # (internet|invoice|anniversary)
+    db:
+      name: myaccount
+      user: root
+      password: Vilkas1
+    dump_root_dir: /u/apps/aussie_ActiveAS/shared/dumps
+    ftp_directory: shared/received
+    invoice:
+      dir: /mnt/clientfolders/Aussie/Invoices/BR%b/PDF/
+      due_on: invoice # (invoice|billing_period)
+      format: "%i.pdf"  # default is %i.pdf
+    login: app_myaccount
+    logo:
+      display_for_child_account: true # default is true
+      image: /images/customers/aussie/logo.jpg
+      url: http://aussiephonecompany.com.au/
+    password_key: foo
+    retry_seconds: 60
+    reward_points:
+      enabled: false # default is false
+    services:
+      current_spend: false # default is false
+    ssh_key: /home/aussie_active_as/.ssh/id_rsa
+    support_itemisation: true # default is true
+    yellowfin:
+      enabled: false
+  online_payments:
+    enabled: true
+    pay_now_link: /aussie/pay_now
+    popup: true
+    terms_and_conditions_link: http://www.aussiephonecompany.com.au/payment-terms-and-conditions/
+    gateway: 
+      class: Gateways::Paycorp
+      params:
+        client_id: 10004139
+    outbox:
+      url: https://myaccount.activebilling.com.au
+      login: root
+      password: Vilkas1
+    credit_card_types:
+    - code: VI
+      description: Visa
+      surcharge: 0
+    - code: MC
+      description: MasterCard
+      surcharge: 0
+  tools:
+    compress:
+      tar.bz2: "tar cf - %s | bzip2 - > %s"
