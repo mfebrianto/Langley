@@ -1,49 +1,9 @@
 require 'test_helper'
 
 class CustomersControllerTest < ActionController::TestCase
-  setup do
-    @customer = customers(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:customers)
-  end
-
-  test "should get new" do
-    get :new
+  test "should get main" do
+    get :main
     assert_response :success
   end
 
-  test "should create customer" do
-    assert_difference('Customer.count') do
-      post :create, customer: { abn: @customer.abn, created_by: @customer.created_by, email: @customer.email, file_dir: @customer.file_dir, name: @customer.name, registered_name: @customer.registered_name, trading_as: @customer.trading_as, updated_by: @customer.updated_by, url: @customer.url }
-    end
-
-    assert_redirected_to customer_path(assigns(:customer))
-  end
-
-  test "should show customer" do
-    get :show, id: @customer
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @customer
-    assert_response :success
-  end
-
-  test "should update customer" do
-    put :update, id: @customer, customer: { abn: @customer.abn, created_by: @customer.created_by, email: @customer.email, file_dir: @customer.file_dir, name: @customer.name, registered_name: @customer.registered_name, trading_as: @customer.trading_as, updated_by: @customer.updated_by, url: @customer.url }
-    assert_redirected_to customer_path(assigns(:customer))
-  end
-
-  test "should destroy customer" do
-    assert_difference('Customer.count', -1) do
-      delete :destroy, id: @customer
-    end
-
-    assert_redirected_to customers_path
-  end
 end

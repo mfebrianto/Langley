@@ -1,6 +1,5 @@
 Langley::Application.routes.draw do
-  get "customer/main"
-
+  resources :customers
 
 
   # The priority is based upon order of creation:
