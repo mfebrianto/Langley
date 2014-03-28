@@ -3,6 +3,15 @@ class CustomersController < ApplicationController
   end
 
   def index
+    redis_url = "tcp://localhost:6379/0"  #todo: update to env
+    cia = CIA.new(redis_url)
+    customer_list = cia.list
+
+    customer_list.each do |customer|
+      puts "#{customer}"
+    end
+
+
   end
 
   def create
@@ -13,7 +22,11 @@ class CustomersController < ApplicationController
     @customer.yaml = params['yaml']
 
     #this code to send yaml
-    @customer.save
+    if @customer.save
+      @customer.publish
+    else
+      Rails.logger.info "todo"
+    end
 
     respond_to do |format|
         format.html { render action: 'index' }
