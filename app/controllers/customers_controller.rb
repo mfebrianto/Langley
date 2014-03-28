@@ -6,14 +6,21 @@ class CustomersController < ApplicationController
   end
 
   def create
-    comments_from_form = params['comment']
-    Rails.logger.info ">>>>>#{comments_from_form}"
+
+    #need to be make more elegant
+    @customer = Customer.new
+    @customer.name = params['name']
+    @customer.yaml = params['yaml']
+
+    #this code to send yaml
+    @customer.save
 
     respond_to do |format|
         format.html { render action: 'index' }
     end
 
   end
+
 
   def update
 

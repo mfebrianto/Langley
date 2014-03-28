@@ -14,6 +14,9 @@ gem 'slim-rails'
 #temporary database, before use the real one:
 gem 'sqlite3'
 
+#NOSQL database
+gem 'redis'
+
 # Gems used only for assets
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

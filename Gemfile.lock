@@ -125,6 +125,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   rails (= 3.2.12)
+  redis
   sass-rails (~> 3.2.3)
   slim-rails
   sqlite3
