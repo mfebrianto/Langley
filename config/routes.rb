@@ -4,8 +4,8 @@ Langley::Application.routes.draw do
   post '/customers'             => 'customers#create'
   get '/customers/new'          => 'customers#new', as: :new_customer
   get '/customers/:name/edit'   => 'customers#edit', as: :edit_customer
-  put '/customers/:name'        => 'customers#update', as: :customers
-  post '/customers/:name'       => 'customers#update', as: :customers
+  put '/customers/:name'        => 'customers#update'
+  post '/customers/:name'       => 'customers#update'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

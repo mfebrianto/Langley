@@ -4,9 +4,24 @@ class CustomersController < ApplicationController
   end
 
   def index
+    Rails.logger.info ">>>>>>> 1"
+
     redis_url = "tcp://localhost:6379/0"  #todo: update to env
+
+    Rails.logger.info ">>>>>>> 2"
+
+
     cia = CIA.new(redis_url)
+
+    Rails.logger.info ">>>>>>> #{cia.list}"
+
     @customer_list = cia.list
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @customers }
+    end
+
   end
 
   def create
@@ -20,14 +35,11 @@ class CustomersController < ApplicationController
       Rails.logger.info "todo"
     end
 
-    respond_to do |format|
-        format.html { render action: 'index' }
-    end
+    redirect_to action: "index"
 
   end
 
   def update
-    Rails.logger.info ">>>> invoke update"
     @customer = Customer.new(params[:customer])
 
     #this code to send yaml
@@ -37,9 +49,7 @@ class CustomersController < ApplicationController
       Rails.logger.info "todo"
     end
 
-    respond_to do |format|
-      format.html { render action: 'index' }
-    end
+    redirect_to action: "index"
 
 
   end
