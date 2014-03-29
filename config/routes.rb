@@ -1,6 +1,11 @@
 Langley::Application.routes.draw do
-  resources :customers
 
+  get '/customers'              => 'customers#index', as: :customers
+  post '/customers'             => 'customers#create'
+  get '/customers/new'          => 'customers#new', as: :new_customer
+  get '/customers/:name/edit'   => 'customers#edit', as: :edit_customer
+  put '/customers/:name'        => 'customers#update', as: :customers
+  post '/customers/:name'       => 'customers#update', as: :customers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -15,6 +20,7 @@ Langley::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  #resources :customers
 
   # Sample resource route with options:
   #   resources :products do
