@@ -6,6 +6,7 @@ class Customer
   attr_accessor :name, :yaml
 
   validates_presence_of :name, :yaml
+  validate :yaml_format
 
   def initialize(attributes = {})
     attributes.each do |name, value|
@@ -22,6 +23,14 @@ class Customer
   def publish
     redis = Redis.new
     redis.publish 'langley-publish', yaml
+  end
+
+  def yaml_format
+    begin
+      YAML.load(yaml)
+    rescue Exception => ex
+      errors.add(:yaml, "Please check your YAML format: #{ex.message}")
+    end
   end
 
   def persisted?
