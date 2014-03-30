@@ -14,25 +14,36 @@ class CustomersController < ApplicationController
 
     @customer = Customer.new(params[:customer])
 
-    #this code to send yaml
-    if @customer.save
-      @customer.publish
+    if @customer.valid?
+      #this code to send yaml
+      if @customer.save
+        @customer.publish
+        redirect_to action: "index"
+      else
+        Rails.logger.info "todo"
+        render :action => 'new'
+      end
     else
-      Rails.logger.info "todo"
+      render :action => 'new'
     end
 
-    redirect_to action: "index"
+
 
   end
 
   def update
     @customer = Customer.new(params[:customer])
 
-    #this code to send yaml
-    if @customer.save
-      @customer.publish
+    if @customer.valid?
+      #this code to send yaml
+      if @customer.save
+        @customer.publish
+      else
+        render :action => 'edit'
+        Rails.logger.info "todo"
+      end
     else
-      Rails.logger.info "todo"
+      render :action => 'edit'
     end
 
     redirect_to action: "index"
